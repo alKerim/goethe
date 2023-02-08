@@ -1,3 +1,6 @@
+# API Keys
+lib/openai_api/api_key.dart
+
 # Miscellaneous
 *.class
 *.log
