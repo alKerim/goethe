@@ -1,6 +1,4 @@
-import 'dart:io';
-
-import 'package:ai_poetry/openai_api/api_key.dart';
+import 'package:ai_poetry/openai_api/api_key/api_key.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ai_poetry/openai_api/moderations_request.dart';
 import 'package:ai_poetry/openai_api/moderations_response.dart';
