@@ -1,5 +1,5 @@
 # API Keys
-lib/openai_api/api_key.dart
+/lib/openai_api/api_key/
 
 # Miscellaneous
 *.class
