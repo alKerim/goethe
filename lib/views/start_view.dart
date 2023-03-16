@@ -57,13 +57,13 @@ class _StartViewState extends State<StartView> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 const Text(
-                    "You think you a poet huh!!? \n"
-                    "type in a keyword and see the allgorithm does it faster/better than you.",
+                    "Are you a poet ? \n"
+                    "Type in the title for your poem and see the algorithm do it's thing.",
                     textAlign: TextAlign.center),
                 CupertinoTextField(
                   controller: widget.controller,
                   placeholder:
-                      "path of the warrior, fashion lovers, whatever...",
+                      "ritter in gold, fashion lovers, whatever...",
                   maxLength: 50,
                   style: const TextStyle(color: Colors.black),
                   placeholderStyle: const TextStyle(color: Colors.black26),

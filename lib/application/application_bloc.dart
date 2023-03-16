@@ -47,7 +47,7 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
           currentPoem = Poem(prompt, currentCompletion.toString());
           emit(ApplicationShowingCompletion());
         }
-      } on Exception catch (e) {
+      } on Exception catch (_) {
         print("ERROR ${event}");
       }
     });
@@ -80,9 +80,7 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
       return PoemStorage.fromJson(contents);
 
     } catch (e) {
-      // If encountering an error, return 0
-      return PoemStorage([Poem("Failed", "ERROR")]);
-      //return "readPoems has Error";
+      return PoemStorage([]);
     }
   }
 
