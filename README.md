@@ -1,6 +1,7 @@
 # ai_poetry
 
-AI poetry app
+AI poetry app, is an app that is becoming a digital legacy of **Wolfgang von Goethe**, the german poet and writer.
+
 
 ## If you want to try the app out
 If you have an IOS Device:
