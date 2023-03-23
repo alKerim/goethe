@@ -25,7 +25,7 @@ class _StartViewState extends State<StartView> {
     optionalErrorMessage = widget.optionalErrorMessage;
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if(hasErrorNotification()) {
+      if (hasErrorNotification()) {
         errorNotification();
       }
     });
@@ -42,10 +42,13 @@ class _StartViewState extends State<StartView> {
         Align(
           alignment: Alignment.centerLeft,
           child: CupertinoButton(
-            child: Icon(CupertinoIcons.square_favorites_alt_fill, color: Colors.black,),
+            child: Icon(
+              CupertinoIcons.square_favorites_alt_fill,
+              color: Colors.black,
+            ),
             onPressed: () {
-              BlocProvider.of<ApplicationBloc>(context).add(
-                  ApplicationOpenSavedPoemsEvent());
+              BlocProvider.of<ApplicationBloc>(context)
+                  .add(ApplicationOpenSavedPoemsEvent());
             },
           ),
         ),
@@ -62,8 +65,7 @@ class _StartViewState extends State<StartView> {
                     textAlign: TextAlign.center),
                 CupertinoTextField(
                   controller: widget.controller,
-                  placeholder:
-                      "ritter in gold, fashion lovers, whatever...",
+                  placeholder: "ritter in gold, fashion lovers, whatever...",
                   maxLength: 50,
                   style: const TextStyle(color: Colors.black),
                   placeholderStyle: const TextStyle(color: Colors.black26),
@@ -100,12 +102,14 @@ class _StartViewState extends State<StartView> {
             onPressed: () {
               OverlaySupportEntry.of(context)?.dismiss();
             },
-            child: const Text('Dismiss', style: TextStyle(color: Colors.white),));
+            child: const Text(
+              'Dismiss',
+              style: TextStyle(color: Colors.white),
+            ));
       }),
     );
     setState(() {
       optionalErrorMessage = null;
     });
   }
-
 }

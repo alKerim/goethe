@@ -10,13 +10,16 @@ class PoemStorage {
 
   factory PoemStorage.fromJson(var rawJson) {
     Map<String, dynamic> map = jsonDecode(rawJson);
-    List<dynamic> list =  map['poems'];
+
+    /// Get Poems
+    List<dynamic> list = map['poems'];
     List<Poem> poems = [];
-    for(Map<String, dynamic> p in list) {
+    for (Map<String, dynamic> p in list) {
       String title = p['title'];
       String poem = p['poem'];
       poems.add(Poem(title, poem));
     }
+
     return PoemStorage(poems);
   }
 
@@ -26,5 +29,4 @@ class PoemStorage {
 
     return result;
   }
-
 }

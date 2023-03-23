@@ -1,5 +1,4 @@
 import 'package:ai_poetry/storage/Poem.dart';
-import 'package:ai_poetry/storage/PoemStorage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,51 +36,56 @@ class SavedPoemsView extends StatelessWidget {
           Expanded(
             flex: 15,
             child: ListView.builder(
-                    itemCount: poems.length,
-                    itemBuilder: (context, index) {
-                      return Center(
-                          child: Column(
-                        children: [
-                          GestureDetector(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5.0),
-                                child: Text(poems[index].title),
+              itemCount: poems.length,
+              itemBuilder: (context, index) {
+                return Center(
+                    child: Column(
+                  children: [
+                    GestureDetector(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5.0),
+                        child: Text(poems[index].title),
+                      ),
+                      onTap: () {
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                              height: MediaQuery.of(context).size.height * 0.7,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: CupertinoColors
+                                      .secondarySystemBackground),
+                              child: Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(
+                                      poems[index].title,
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                    Text(poems[index].poem,
+                                        style: TextStyle(color: Colors.black)),
+                                    CupertinoButton(
+                                      child: GlobalDesign.cupertinoButtonChild(
+                                          "Close"),
+                                      onPressed: () => Navigator.pop(context),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            onTap: () {
-                              showCupertinoModalPopup(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return Container(
-                                    height: MediaQuery.of(context).size.height * 0.7,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: CupertinoColors.secondarySystemBackground
-                                    ),
-                                    child: Center(
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: <Widget>[
-                                          Text(poems[index].title, style: TextStyle(color: Colors.black),),
-                                          Text(poems[index].poem, style: TextStyle(color: Colors.black)),
-                                          CupertinoButton(
-                                            child: GlobalDesign.cupertinoButtonChild("Close"),
-                                            onPressed: () => Navigator.pop(context),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                          if (index < poems.length - 1) Divider()
-                        ],
-                      ));
-                      //return Text(snapshot.data.toString());
-                    },
-                  ),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                    if (index < poems.length - 1) Divider()
+                  ],
+                ));
+                //return Text(snapshot.data.toString());
+              },
+            ),
           ),
         ],
       ),

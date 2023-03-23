@@ -53,21 +53,19 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
     });
     on<ApplicationCompletionLoadedEvent>(
         (event, emit) => emit(ApplicationShowingCompletion()));
-    on<ApplicationOpenSavedPoemsEvent>(
-            (event, emit) async {
-              emit(ApplicationLoadingSavedPoems());
-              try {
-                print("Loading saved poems");
+    on<ApplicationOpenSavedPoemsEvent>((event, emit) async {
+      emit(ApplicationLoadingSavedPoems());
+      try {
+        print("Loading saved poems");
 
-                poemStorage = await readPoems();
-                emit(ApplicationShowingSavedPoems());
-              }
-              catch(e) {
-                print("Error: $event");
-              }
-            });
+        poemStorage = await readPoems();
+        emit(ApplicationShowingSavedPoems());
+      } catch (e) {
+        print("Error: $event");
+      }
+    });
     on<ApplicationBackToStartEvent>(
-            (event, emit) => emit(ApplicationStartState()));
+        (event, emit) => emit(ApplicationStartState()));
   }
 
   Future<PoemStorage> readPoems() async {
@@ -78,7 +76,6 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
       final contents = await file.readAsString();
 
       return PoemStorage.fromJson(contents);
-
     } catch (e) {
       return PoemStorage([]);
     }
@@ -111,7 +108,6 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
     print("Got the path: $path");
     return File('$path/poem-storage.txt');
   }
-
 
   Future<String> get _localPath async {
     print("About to call: getApplicationDocumentsDirectory");

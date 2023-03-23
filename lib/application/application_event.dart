@@ -12,4 +12,3 @@ class ApplicationCompletionLoadedEvent extends ApplicationEvent {}
 class ApplicationOpenSavedPoemsEvent extends ApplicationEvent {}
 
 class ApplicationBackToStartEvent extends ApplicationEvent {}
-

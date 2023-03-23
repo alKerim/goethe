@@ -26,9 +26,12 @@ class MainView extends StatelessWidget {
         Align(
           alignment: Alignment.centerRight,
           child: CupertinoButton(
-            child: const Icon(Icons.save, color: Colors.black,),
+            child: const Icon(
+              Icons.save,
+              color: Colors.black,
+            ),
             onPressed: () {
-              if(!saved) {
+              if (!saved) {
                 bloc.saveCurrentPoem();
                 saved = true;
               }
@@ -40,24 +43,24 @@ class MainView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-          Text(
-            currentPoem.title,
-            style: TextStyle(fontSize: 25),
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            currentPoem.poem,
-            style: TextStyle(fontSize: 15),
-          ),
-          CupertinoButton(
-              child: Text(
-                "New Poem",
-                style: TextStyle(color: Colors.black),
+              Text(
+                currentPoem.title,
+                style: TextStyle(fontSize: 25),
+                textAlign: TextAlign.center,
               ),
-              onPressed: () {
-                BlocProvider.of<ApplicationBloc>(context)
-                    .add(ApplicationInitialStartEvent());
-              })
+              Text(
+                currentPoem.poem,
+                style: TextStyle(fontSize: 15),
+              ),
+              CupertinoButton(
+                  child: Text(
+                    "New Poem",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onPressed: () {
+                    BlocProvider.of<ApplicationBloc>(context)
+                        .add(ApplicationInitialStartEvent());
+                  })
             ],
           ),
         ),
